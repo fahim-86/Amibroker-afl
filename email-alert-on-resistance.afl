@@ -1,5 +1,8 @@
 _SECTION_BEGIN("Email Alert on Resistance")
 
+// Send Alerts even if Amibroker is minimized or Chart is not active
+RequestTimedRefresh(2, False);
+
 logscale = ParamToggle("Test Scale", "Off|On", 0 ); //add property of parameters 'Name' & 'Value'
 
 _SECTION_END()
