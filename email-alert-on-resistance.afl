@@ -1,4 +1,5 @@
 _SECTION_BEGIN("Email Alert on Resistance")
 
+logscale = ParamToggle("Test Scale", "Off|On", 0 ); //add property of parameters 'Name' & 'Value'
 
 _SECTION_END()
