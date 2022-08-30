@@ -11,4 +11,15 @@ SetChartOptions( IIf( logScale==1, 2, 3 ), chartWrapTitle );
 lineValue = Study("RE", GetChartID());
 lastPrice = LastValue(C);
 
+function BuyAlerts(AlertBuy,Message)
+{	
+	if(AlertBuy)
+	{
+		AlertIf(AlertBuy,"EMAIL",Message,2,1+2+4);
+	}	
+}
+//BuyAlerts(1,"This is a test message");
+AlertIf(true, "EXEC C:\\Program Files (x86)\\AmiBroker\\EMailerSSL.exe", "This is a test message", 5,
+0);
+
 _SECTION_END()
