@@ -4,6 +4,7 @@ _SECTION_BEGIN("Email Alert on Resistance")
 RequestTimedRefresh(2, False);
 
 logscale = ParamToggle("Test Scale", "Off|On", 0 ); //add property of parameters 'Name' & 'Value'
+EmailAlerts = ParamToggle("Mail Alerts","Disable|Enable",0);
 
 //Use Chart's default options
 SetChartOptions( IIf( logScale==1, 2, 3 ), chartWrapTitle );
@@ -15,11 +16,10 @@ function BuyAlerts(AlertBuy,Message)
 {	
 	if(AlertBuy)
 	{
-		AlertIf(AlertBuy,"EMAIL",Message,2,1+2+4);
+		AlertIf(AlertBuy,"EMAIL",Message,5,0);
 	}	
 }
-//BuyAlerts(1,"This is a test message");
-AlertIf(true, "EXEC C:\\Program Files (x86)\\AmiBroker\\EMailerSSL.exe", "This is a test message", 5,
-0);
+BuyAlerts(1,"This is a test message");
+//AlertIf(true, "EXEC C:\\Program Files (x86)\\AmiBroker\\EMailerSSL.exe", "This is a test message", 5,0);
 
 _SECTION_END()
