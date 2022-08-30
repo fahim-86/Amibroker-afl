@@ -1,1 +1,1 @@
-# Amibroker-afl
+# Amibroker AFL for Email notification
