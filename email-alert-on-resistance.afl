@@ -5,4 +5,10 @@ RequestTimedRefresh(2, False);
 
 logscale = ParamToggle("Test Scale", "Off|On", 0 ); //add property of parameters 'Name' & 'Value'
 
+//Use Chart's default options
+SetChartOptions( IIf( logScale==1, 2, 3 ), chartWrapTitle );
+
+lineValue = Study("RE", GetChartID());
+lastPrice = LastValue(C);
+
 _SECTION_END()
