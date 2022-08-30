@@ -14,11 +14,24 @@ _SECTION_BEGIN("Email Alert on Resistance")
 // Send Alerts even if Amibroker is minimized or Chart is not active
 RequestTimedRefresh(2, False);
 
-EmailAlerts = ParamToggle("Mail Alerts","Disable|Enable",0);
+//Chart parameter option for both Buy & Sell
+ResistanceAlerts = ParamToggle("Alert for Sell","Disable|Enable",0);
+SupportAlerts = ParamToggle("Alert for Purchase","Disable|Enable",0);
 
-drawLineValue = Study("UP", GetChartID());
-AdjustDec = Prec(drawLineValue, 3 );
-lastPrice = Prec(LastValue(C), 3);
+drawUPLineValue = Study("UP", GetChartID());
+UPLineValueAdj = Prec(drawUPLineValue, 3 );
+AdjClosePrice = Prec(LastValue(C), 3);
+
+drawDOWNLineValue = Study("DN", GetChartID());
+DOWNLineValueAdj = Prec(drawDOWNLineValue, 3 );
+
+if(ResistanceAlerts)
+{
+	if(AdjClosePrice[0] > UPLineValueAdj[0])
+	{
+		Plot( AdjClosePrice, "Last Price", colorRed );
+	}
+}
 
 if(lastPrice[0] > AdjustDec[0])
 {
