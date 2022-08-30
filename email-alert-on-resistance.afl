@@ -1,16 +1,31 @@
+//////////////////////////////////////////////
+//Email notifier over Support and Resistance level cross
+//Coded by Fahim Morshed - Software Engineer
+//Date : 31/08/2022
+//////////////////////////////////////////////
+
+
 _SECTION_BEGIN("Email Alert on Resistance")
+
+//logscale = ParamToggle("Test Scale", "Off|On", 0 ); //add property of parameters 'Name' & 'Value'
+//Use Chart's default options
+//SetChartOptions( IIf( logScale==1, 2, 3 ), chartWrapTitle );
 
 // Send Alerts even if Amibroker is minimized or Chart is not active
 RequestTimedRefresh(2, False);
 
-logscale = ParamToggle("Test Scale", "Off|On", 0 ); //add property of parameters 'Name' & 'Value'
 EmailAlerts = ParamToggle("Mail Alerts","Disable|Enable",0);
 
-//Use Chart's default options
-SetChartOptions( IIf( logScale==1, 2, 3 ), chartWrapTitle );
+drawLineValue = Study("UP", GetChartID());
+AdjustDec = Prec(drawLineValue, 3 );
+lastPrice = Prec(LastValue(C), 3);
 
-lineValue = Study("RE", GetChartID());
-lastPrice = LastValue(C);
+if(lastPrice[0] > AdjustDec[0])
+{
+	Plot( lastPrice, "Study", colorRed );
+} else {
+	Plot( AdjustDec, "Study", colorRed );
+}
 
 function BuyAlerts(AlertBuy,Message)
 {	
