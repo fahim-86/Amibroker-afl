@@ -25,29 +25,17 @@ AdjClosePrice = Prec(LastValue(C), 3);
 drawDOWNLineValue = Study("DN", GetChartID());
 DOWNLineValueAdj = Prec(drawDOWNLineValue, 3 );
 
+text = Name() + " closed today @ TK. " + AdjClosePrice + " Price is " ;
 if(ResistanceAlerts)
 {
-	if(AdjClosePrice[0] > UPLineValueAdj[0])
-	{
-		Plot( AdjClosePrice, "Last Price", colorRed );
-	}
-}
+	Plot( UPLineValueAdj, "UP alert sets @ ", ParamColor( "UP Color", colorCycle ), ParamStyle("Style") );
+	AlertIf(AdjClosePrice[0] > UPLineValueAdj[0],"EMAIL",text + "High",5,0);	
+}	
 
-if(lastPrice[0] > AdjustDec[0])
+if(SupportAlerts)
 {
-	Plot( lastPrice, "Study", colorRed );
-} else {
-	Plot( AdjustDec, "Study", colorRed );
+	Plot( DOWNLineValueAdj, "DOWN alert sets @ ", ParamColor( "DOWN Color", colorRed ), ParamStyle("Style") );
+	AlertIf(AdjClosePrice[0] < DOWNLineValueAdj[0],"EMAIL",text + "Low",5,0);
 }
-
-function BuyAlerts(AlertBuy,Message)
-{	
-	if(AlertBuy)
-	{
-		AlertIf(AlertBuy,"EMAIL",Message,5,0);
-	}	
-}
-BuyAlerts(1,"This is a test message");
-//AlertIf(true, "EXEC C:\\Program Files (x86)\\AmiBroker\\EMailerSSL.exe", "This is a test message", 5,0);
 
 _SECTION_END()
