@@ -1,2 +1,6 @@
 # Amibroker AFL for Email notification
-Not suitable for Intraday & Hourly trade
+#### Not suitable for Intraday & Hourly trade
+
+### License
+
+GNU
