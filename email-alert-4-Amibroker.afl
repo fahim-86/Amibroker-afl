@@ -5,14 +5,14 @@
 //////////////////////////////////////////////
 
 
-_SECTION_BEGIN("Email Alert on Resistance")
+_SECTION_BEGIN("Email Alert")
 
 //logscale = ParamToggle("Test Scale", "Off|On", 0 ); //add property of parameters 'Name' & 'Value'
 //Use Chart's default options
 //SetChartOptions( IIf( logScale==1, 2, 3 ), chartWrapTitle );
 
 // Send Alerts even if Amibroker is minimized or Chart is not active
-RequestTimedRefresh(2, False);
+//RequestTimedRefresh(2, False);
 
 //Chart parameter option for both Buy & Sell
 ResistanceAlerts = ParamToggle("Alert for Sell","Disable|Enable",0);
@@ -28,13 +28,23 @@ DOWNLineValueAdj = Prec(drawDOWNLineValue, 3 );
 text = Name() + " closed today @ TK. " + AdjClosePrice + " Price is " ;
 if(ResistanceAlerts)
 {
-	Plot( UPLineValueAdj, "UP alert sets @ ", ParamColor( "UP Color", colorCycle ), ParamStyle("Style") );
+	if(NullCount(UPLineValueAdj))
+	{
+		Plot( UPLineValueAdj, "No value set yet", ParamColor( "UP Color", colorCycle ));
+	} else {
+		Plot( UPLineValueAdj, "UP alert sets @ ", ParamColor( "UP Color", colorCycle ), ParamStyle("Style") );
+	}
 	AlertIf(AdjClosePrice[0] > UPLineValueAdj[0],"EMAIL",text + "High",5,0);	
 }	
 
 if(SupportAlerts)
 {
-	Plot( DOWNLineValueAdj, "DOWN alert sets @ ", ParamColor( "DOWN Color", colorRed ), ParamStyle("Style") );
+	if(NullCount( DOWNLineValueAdj))
+	{
+		Plot( DOWNLineValueAdj, "No value set yet", ParamColor( "DOWN Color", colorRed ));
+	} else {
+		Plot( DOWNLineValueAdj, "DOWN alert sets @ ", ParamColor( "DOWN Color", colorRed ), ParamStyle("Style") );
+	}
 	AlertIf(AdjClosePrice[0] < DOWNLineValueAdj[0],"EMAIL",text + "Low",5,0);
 }
 
