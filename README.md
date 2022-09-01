@@ -18,10 +18,11 @@ You will receive an email as soon as the price close Above or Below the support/
 Check this out for [Amibroker email setting](https://www.amibroker.com/kb/2014/11/12/how-to-configure-alerts-to-work-with-ssl-e-mail-accounts/)
 
 For Gmail configuration follow below instruction:
-> Log in to your google account In Google Security "Less Secure Apps" turn OFF.
-> Enable 2-Step authentication. Search for "App Passwords", and under "Select app" select "other"
-> then under device type "Amibroker" without the quotes, then press "Generate" button.
-> This produces a 16-digit passcode that is then used in Amibroker in place of your Gmail account password.
+> Log in to your google account. In Google Security `Less Secure Apps` is no longer available.
+> Enable 2-Step authentication. Search for <b>App Passwords</b>, and under `Select app` select `other`,
+> then under device type <b>Amibroker</b>. Then press `Generate` button.
+> This will generate a 16-digit passcode, use that code in Amibroker where Gmail account and password
+> require.
 
 ### Contributing
 
