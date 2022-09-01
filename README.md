@@ -1,4 +1,4 @@
-# Amibroker AFL for Email notification
+i# Amibroker AFL for Email notification
 #### Not suitable for Intraday & Hourly trade
 
 ### Authors
@@ -18,7 +18,7 @@ You will receive an email as soon as the price close Above or Below the support/
 Check this out for [Amibroker email setting](https://www.amibroker.com/kb/2014/11/12/how-to-configure-alerts-to-work-with-ssl-e-mail-accounts/)
 
 For Gmail configuration follow below instruction:
-> Log in to your google account. In Google Security `Less Secure Apps` is no longer available.
+> Log in to your google account. In <i>Google Security</i> `Less Secure Apps` option is no longer available.
 > Enable 2-Step authentication. Search for <b>App Passwords</b>, and under `Select app` select `other`,
 > then under device type <b>Amibroker</b>. Then press `Generate` button.
 > This will generate a 16-digit passcode, use that code in Amibroker where Gmail account and password
