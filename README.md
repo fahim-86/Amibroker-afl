@@ -10,8 +10,8 @@
  - Draw a line on the chart
  - Double click to open the line Properties
  - Set Study ID `UP/DN`
-    - [UP][http://#] - for resistance line
-    - [DN][http://#] - for support line
+    - `UP` - for resistance line
+    - `DN` - for support line
 
 Check this out for [Amibroker email setting](https://www.amibroker.com/kb/2014/11/12/how-to-configure-alerts-to-work-with-ssl-e-mail-accounts/)
 
